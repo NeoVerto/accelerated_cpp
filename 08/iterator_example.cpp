@@ -117,5 +117,5 @@ bool binary_search(Ran begin, Ran end, const X& x)
 /**
  * 输出迭代器和输入迭代器的必要性
  * - 迭代器并非关联于容器.
- * - 迭代器
+ * - 迭代器有很好的适应性.
  */
