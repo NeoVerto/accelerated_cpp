@@ -31,6 +31,17 @@ void split(const string& str, Out os)
       /**
        * 这样, 就能将 split 函数用于任何非输入迭代器.
        */
+
+      /**
+       * istream_iterator<T>(istream)
+       * - 从 istream 中读入 T 类型的值.
+       * - istream 留空则产生默认 istream_iterator<T>, 用于文件末尾或错误状态.
+       */
+
+      /**
+       * ostream_iterator<T>(ostream, dim)
+       * - 向 ostream 输出, 以 dim 分割.
+       */
     i = j;
   }
 }
