@@ -109,6 +109,33 @@ public:
      */
   }
 
+  iterator erase(iterator pos)
+  {
+    if (pos < avail)
+    {
+      // 销毁删除位置的元素
+      alloc.destroy(pos);
+      // 将 pos 后面的所有元素前移
+      iterator new_pos = std::move(pos + 1, avail, pos);
+      // 更新 avail
+      --avail;
+      return new_pos;
+    }
+
+    return avail; // 若 pos 不在有效范围内, 返回 avail
+  }
+
+  iterator erase(iterator begin, iterator end)
+  {
+    if (begin)
+  }
+
+  void clear()
+  {
+    for (iterator it = data; it != avail; ++it)
+      alloc.destroy(it);
+    avail = data;
+  }
 private:
   iterator data;    // vec 中的首元素
   iterator avail;   // vec 构造元素后面的一个元素
