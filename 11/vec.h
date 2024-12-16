@@ -125,9 +125,21 @@ public:
     return avail; // 若 pos 不在有效范围内, 返回 avail
   }
 
-  iterator erase(iterator begin, iterator end)
+  iterator erase(iterator first, iterator last)
   {
-    if (begin)
+    if (first == last)
+      return first;
+
+    iterator new_avail = std::move(last, avail, first);
+
+    // 销毁区间中的元素
+    for (iterator it = first; it != last; ++it)
+      alloc.destroy(it);
+
+    // 更新 avail
+    avail = new_avail;
+
+    return first;
   }
 
   void clear()
@@ -218,10 +230,10 @@ void vec<T>::create(size_type n, const T& val)
 }
 
 template <class T>
-void vec<T>::create(const_iterator i, const_iterator j)
+void vec<T>::create(const_iterator first, const_iterator last)
 {
-  data = alloc.allocate(j - i);
-  limit = avail = std::uninitialized_copy(i, j, data);
+  data = alloc.allocate(last - first);
+  limit = avail = std::uninitialized_copy(first, last, data);
 }
 
 template <class T>
