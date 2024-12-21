@@ -49,6 +49,8 @@ istream& read_hw(istream& in, vector<double>& hw)
       hw.push_back(x);
     in.clear();
   }
+
+  return in;
 }
 
 // public:
