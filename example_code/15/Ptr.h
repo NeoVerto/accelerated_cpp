@@ -3,10 +3,6 @@
 
 #include <cstddef>
 #include <stdexcept>
-#include "Vec.h"
-/**
- * RefHandle 类永远不会复制数据
- */
 template <class T>
 class Ptr
 {
@@ -76,21 +72,9 @@ private:
   std::size_t* refptr;
 };
 
-/**
- * 全部的问题都可以通过引入一个额外的间接层来解决.
- */
 template <class T>
 T* clone(const T* tp)
 {
   return tp->clone();
 }
-
-template<>
-Vec<char>* clone(const Vec<char>* vp)
-{
-  return new Vec<char>(*vp);
-}
-/**
- * 模板特化: 为特定的参数类型定义一个特殊版本的模板参数.
- */
 #endif  // GUARD_ptr_h
