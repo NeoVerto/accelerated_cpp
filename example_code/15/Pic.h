@@ -7,7 +7,7 @@
 #include <vector>
 #include "Ptr.h"
 
-class Pictrue;
+class Picture;
 
 class PicBase
 {
@@ -100,7 +100,7 @@ private:
     return p->height() + 4;
   }
 
-  void display(std::ostream os, height_size row, bool do_pad) const
+  void display(std::ostream& os, height_size row, bool do_pad) const
   {
     if (row >= height())
     {

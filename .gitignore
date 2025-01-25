@@ -1,5 +1,13 @@
+# clion:
+/.idea/*
+
 # vscode:
 /.vscode/*
+
+# cmake
+/build/*
+/cmake-build-debug/*
+/CMakeLists.txt
 
 # test:
 /test.cpp
